@@ -24,18 +24,18 @@ export const getFriends = () => dispatch => {
         }));
 }
 
-export const addFriend = () => {
-    dispatch({ ADD_FRIEND_START });
+export const addFriend = friend => dispatch => {
+    dispatch({ type: ADD_FRIEND_START });
     axios
-        .get('http://localhost:5000/api/friends', friend)
-        .then(res => {
-            dispatch({
-                type: ADD_FRIEND_SUCCESS,
-                payload: res.data
-            })
-        })
-        .catch(err => dispatch({
-            type: ADD_FRIEND_FAILURE,
-            payload: err
-        }));
-};
+      .post("http://localhost:5000/api/friends", friend)
+      .then(res => {
+        console.log(res);
+        dispatch({ 
+            type: ADD_FRIEND_SUCCESS, 
+            payload: res.data 
+        });
+      })
+      .catch(err => dispatch({ 
+          type: ADD_FRIEND_FAILURE, 
+          payload: err }));
+  };
