@@ -2,6 +2,9 @@ import {
     FETCH_FRIENDS_START,
     FETCH_FRIENDS_SUCCESS,
     FETCH_FRIENDS_FAILURE,
+    FETCH_FRIEND_START,
+    FETCH_FRIEND_SUCCESS,
+    FETCH_FRIEND_FAILURE,
     ADD_FRIEND_START,
     ADD_FRIEND_SUCCESS,
     ADD_FRIEND_FAILURE
@@ -28,6 +31,24 @@ const friendsReducer = (state = initialState, action) => {
                 error: null
             };
         case FETCH_FRIENDS_FAILURE:
+            return {
+                ...state,
+                isFetchingFriends: false,
+                error: action.payload
+            };
+            case FETCH_FRIEND_START:
+            return {
+                ...state,
+                isFetchingFriends: true
+            };
+        case FETCH_FRIENDS_SUCCESS:
+            return {
+                ...state,
+                isFetchingFriends: false,
+                friends: action.payload,
+                error: null
+            };
+        case FETCH_FRIEND_FAILURE:
             return {
                 ...state,
                 isFetchingFriends: false,

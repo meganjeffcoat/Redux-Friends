@@ -5,8 +5,9 @@ function List(props) {
         <div>
             {props.friends.map(friend => (
                 <div key={friend.id}>
-                    {friend.name}
-                    {friend.age}
+                    <h2>{friend.name}</h2>
+                    <h3>{friend.age}</h3>
+                    <h3>{friend.email}</h3>
                 </div>
             ))}
         </div>

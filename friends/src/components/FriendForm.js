@@ -20,12 +20,14 @@ class FriendForm extends React.Component {
 
     submitHandler = e => {
         e.preventDefault();
+        if (this.state.name && this.state.age && this.state.email) {
         this.props.addFriend(this.state);
         this.setState({
            name: '',
            age: '',
            email: '' 
         })
+        }
     };
 
     render() {

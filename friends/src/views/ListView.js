@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import List from '../components/List';
-import { getFriends } from '../actions';
+import { getFriends, addFriend } from '../actions';
 
 
 class ListView extends React.Component {
@@ -11,7 +11,7 @@ class ListView extends React.Component {
     }
 
     render() {
-        if (this.props.isFetchingFriends || !this.props.friends) {
+        if (this.props.fetchingFriends || !this.props.friends) {
             return <p>Fetching Friends...</p>
         }
         return (
@@ -24,8 +24,8 @@ class ListView extends React.Component {
 
 const mapStateToProps = state => ({
     friends: state.friends,
-    isFetchingFriends: state.isFetchingFriends,
+    fetchingFriends: state.fetchingFriends,
     error: state.error
 });
 
-export default connect(mapStateToProps, { getFriends })(ListView);
+export default connect(mapStateToProps, { getFriends, addFriend })(ListView);
